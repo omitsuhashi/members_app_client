@@ -1,4 +1,4 @@
-import 'package:client/pages/auth/signin.dart';
+import 'package:client/pages/auth/signup.dart';
 import 'package:client/pages/sample_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class App extends StatelessWidget {
             // User が null である、つまり未サインインのサインイン画面へ
             return Scaffold(
                 appBar: AppBar(title: const Text("ログイン画面")),
-                body: const SigninPage());
+                body: const SignupPage());
           },
         ),
       );
