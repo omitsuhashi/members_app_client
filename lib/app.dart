@@ -1,5 +1,5 @@
 import 'package:client/pages/auth/signup.dart';
-import 'package:client/pages/sample_app.dart';
+import 'package:client/pages/top.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class App extends StatelessWidget {
             }
             if (snapshot.hasData) {
               // User が null でなない、つまりサインイン済みのホーム画面へ
-              return const MyApp();
+              return const TopPage();
             }
             // User が null である、つまり未サインインのサインイン画面へ
             return Scaffold(
