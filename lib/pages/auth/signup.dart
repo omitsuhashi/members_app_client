@@ -1,7 +1,6 @@
+import 'package:base/components/organisms/auth_form.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../consts/validation_message.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -31,39 +30,7 @@ class SigninState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: emailController,
-              decoration: const InputDecoration(labelText: "メールアドレス"),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return AuthValidation.EMAIL_NOTNULL;
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: passwordController,
-              decoration: const InputDecoration(labelText: "パスワード"),
-              obscureText: true,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return AuthValidation.PASSWORD_NOTNULL;
-                }
-                return null;
-              },
-            ),
-            Container(
-              margin: const EdgeInsets.all(10),
-              child: ElevatedButton(
-                onPressed: onPressSignupButton,
-                child: const Text('サインアップ'),
-              ),
-            )
-          ],
-        ));
+    return AuthFormWidget(
+        onPressSubmit: onPressSignupButton, submitButtonText: "サインアップ");
   }
 }

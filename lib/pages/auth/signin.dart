@@ -1,4 +1,4 @@
-import 'package:client/consts/validation_message.dart';
+import 'package:base/components/organisms/auth_form.dart';
 import 'package:flutter/material.dart';
 
 class SigninPage extends StatefulWidget {
@@ -25,34 +25,9 @@ class SigninState extends State<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: emailController,
-              decoration: const InputDecoration(labelText: "メールアドレス"),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return AuthValidation.EMAIL_NOTNULL;
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: passwordController,
-              decoration: const InputDecoration(labelText: "パスワード"),
-              obscureText: true,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return AuthValidation.PASSWORD_NOTNULL;
-                }
-                return null;
-              },
-            ),
-            ElevatedButton(
-                onPressed: onPressSigninButton, child: const Text("サインイン"))
-          ],
-        ));
+    return AuthFormWidget(
+      onPressSubmit: onPressSigninButton,
+      submitButtonText: "サインイン",
+    );
   }
 }

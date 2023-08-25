@@ -38,6 +38,8 @@ dependencies:
   firebase_core: ^2.15.1
   firebase_auth: ^4.7.3
   qr_flutter: ^4.1.0
+  base:
+    path: ../base/
 
 dev_dependencies:
   flutter_test:
