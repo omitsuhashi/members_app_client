@@ -1,6 +1,5 @@
+import 'package:client/consts/validation_message.dart';
 import 'package:flutter/material.dart';
-
-import '../../consts/validation_message.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({super.key});
