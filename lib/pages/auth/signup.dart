@@ -10,27 +10,20 @@ class SignupPage extends StatefulWidget {
 }
 
 class SigninState extends State<SignupPage> {
-  final _formKey = GlobalKey<FormState>();
-
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  onPressSignupButton() async {
-    if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("..サインアップ中")));
-      try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: emailController.text, password: passwordController.text);
-      } on FirebaseAuthException catch (e) {
-        // TODO エラーハンドリングを行う
-      }
+  onPressSignupButton(String email, String password) async {
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      // TODO エラーハンドリングを行う
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return AuthFormWidget(
-        onPressSubmit: onPressSignupButton, submitButtonText: "サインアップ");
+      onPressSubmit: onPressSignupButton,
+      authType: AuthType.signup,
+    );
   }
 }
