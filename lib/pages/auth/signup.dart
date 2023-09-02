@@ -15,7 +15,10 @@ class SigninState extends State<SignupPage> {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      // TODO エラーハンドリングを行う
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(e.message ?? "サインアップできませんでした")));
+      }
     }
   }
 
