@@ -1,6 +1,7 @@
 import 'package:base/components/organisms/auth_form.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({super.key});
@@ -27,9 +28,18 @@ class SigninState extends State<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AuthFormWidget(
-      onPressSubmit: onPressSigninButton,
-      authType: AuthType.signin,
+    return Column(
+      children: [
+        AuthFormWidget(
+          onPressSubmit: onPressSigninButton,
+          authType: AuthType.signin,
+        ),
+        SignInButton(
+          Buttons.google,
+          text: "Sign up with Google",
+          onPressed: () {},
+        )
+      ],
     );
   }
 }
