@@ -1,3 +1,4 @@
+import 'package:base/components/atoms/divider_with_message.dart';
 import 'package:base/components/organisms/auth_form.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +8,10 @@ class SigninPage extends StatefulWidget {
   const SigninPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => SigninState();
+  State<StatefulWidget> createState() => _SigninState();
 }
 
-class SigninState extends State<SigninPage> {
+class _SigninState extends State<SigninPage> {
   final auth = FirebaseAuth.instance;
 
   onPressSigninButton(String email, String password) {
@@ -30,15 +31,18 @@ class SigninState extends State<SigninPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AuthFormWidget(
-          onPressSubmit: onPressSigninButton,
-          authType: AuthType.signin,
-        ),
         SignInButton(
           Buttons.google,
           text: "Sign up with Google",
           onPressed: () {},
-        )
+        ),
+        const Spacer(),
+        const DividerWithTextWidget(text: Text("OR")),
+        const Spacer(),
+        AuthFormWidget(
+          onPressSubmit: onPressSigninButton,
+          authType: AuthType.signin,
+        ),
       ],
     );
   }
